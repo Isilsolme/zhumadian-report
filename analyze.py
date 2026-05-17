@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 驻马店市政府工作报告文本分析
-需要先运行 crawl.py 爬取数据，生成 zhumadian_reports 目录
+需要先运行 crawl.py 爬取数据，生成 data 目录
 """
 
 import os
@@ -31,7 +31,7 @@ plt.rcParams['font.sans-serif'] = ['SimHei', 'Arial Unicode MS', 'DejaVu Sans']
 plt.rcParams['axes.unicode_minus'] = False
 
 # 输出图片目录
-PLOT_DIR = "plots"
+PLOT_DIR = "output"
 os.makedirs(PLOT_DIR, exist_ok=True)
 
 # ========== 辅助函数 ==========
@@ -57,7 +57,7 @@ def robust_extract_year(text):
     return None
 
 
-def read_reports(report_dir="zhumadian_reports"):
+def read_reports(report_dir="data"):
     """读取所有报告文件，返回DataFrame"""
     data = []
     for fname in os.listdir(report_dir):
@@ -393,7 +393,7 @@ def plot_wordcloud(df):
 
 
 def main():
-    df = read_reports("zhumadian_reports")
+    df = read_reports("data")
     print(f"成功读取 {len(df)} 份报告，年份范围: {df['year'].min()} - {df['year'].max()}")
 
     metrics_df, tfidf_mat = extract_metrics(df)

@@ -26,7 +26,7 @@ class ZhuMaDianReportScraper:
             "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
             "Connection": "keep-alive",
         }
-        self.output_dir = "zhumadian_reports"
+        self.output_dir = "data"
         os.makedirs(self.output_dir, exist_ok=True)
 
     def fetch_html(self, url):
